@@ -1,69 +1,69 @@
-// Файл конфигурации V2Ray. Этот файл соответствует стандартному формату JSON с поддержкой комментариев.
-// Откомментируйте записи ниже, чтобы удовлетворить ваши потребности. Также прочитайте наше руководство для более подробной информации на
-// https://www.v2ray.com /
+// Config file of V2Ray. This file follows standard JSON format, with comments support.
+// Uncomment entries below to satisfy your needs. Also read our manual for more detail at
+// https://www.v2ray.com/
 {
-  «log»: {
- // По умолчанию V2Рэй пишет журнал доступа к stdout.
- // «доступ»: "/ path / to / access / log / file",
+  "log": {
+    // By default, V2Ray writes access log to stdout.
+    // "access": "/path/to/access/log/file",
 
- // По умолчанию V2Рэй пишет журнал ошибок в stdout.
- // «Ошибка»: "/ path / to / error / log / file",
+    // By default, V2Ray write error log to stdout.
+    // "error": "/path/to/error/log/file",
 
- // Уровень журнала, один из «Отладка», «Информация», «Предупреждение», «Ошибка», "Никто"
- "Loglevel" : «Предупреждение»
+    // Log level, one of "debug", "info", "warning", "error", "none"
+    "loglevel": "warning"
   },
- // Список конфигураций входящих прокси.
+  // List of inbound proxy configurations.
   "inbounds": [{
- // Порт для прослушивания. Вам может понадобиться корневой доступ, если значение меньше 1024.
-    «порт»: 1080,
+    // Port to listen on. You may need root access if the value is less than 1024.
+    "port": 1080,
 
- // IP-адрес для прослушивания. Изменить на «0.0.0.0» прослушивать все сетевые интерфейсы.
- "Слушать": «127.0.0.1»,
+    // IP address to listen on. Change to "0.0.0.0" to listen on all network interfaces.
+    "listen": "127.0.0.1",
 
- // Метка входящего прокси. Может использоваться для маршрутизации.
-    «Тег»: "носки-входящие",
+    // Tag of the inbound proxy. May be used for routing.
+    "tag": "socks-inbound",
 
- // Протокол имени входящего прокси.
-    «Протокол»: «носки»,
+    // Protocol name of inbound proxy.
+    "protocol": "socks",
 
- // Настройки протокола. Зависит от протокола.
-    «Посещения»: {
-      "Auth": «Ноут»,
-      «Удп»: ложный,
-      «ip»: «127.0.0.1»
+    // Settings of the protocol. Varies based on protocol.
+    "settings": {
+      "auth": "noauth",
+      "udp": false,
+      "ip": "127.0.0.1"
     },
 
- // Включить обнюхивание по TCP-соединению.
-    «нюхает»: {
-      «включено»: правда,
- // Целевой домен будет переопределен на тот, который несет соединение, если соединение HTTP или HTTPS
-      "destOverride": [«Http», "TLS"]
+    // Enable sniffing on TCP connection.
+    "sniffing": {
+      "enabled": true,
+      // Target domain will be overriden to the one carried by the connection, if the connection is HTTP or HTTPS.
+      "destOverride": ["http", "tls"]
     }
   }],
- // Список конфигураций исходящих прокси.
-  "преимущества": [{
- // Название протокола исходящего прокси.
-    «Протокол»: «свобода»,
+  // List of outbound proxy configurations.
+  "outbounds": [{
+    // Protocol name of the outbound proxy.
+    "protocol": "freedom",
 
- // Настройки протокола. Зависит от протокола.
-    «Посещения»: {},
+    // Settings of the protocol. Varies based on protocol.
+    "settings": {},
 
- // Метка исходящего. Может использоваться для маршрутизации.
-    «Тег»: «прямой»
+    // Tag of the outbound. May be used for routing.
+    "tag": "direct"
   },{
-    «Протокол»: «черная дыра»,
-    «Посещения»: {},
-    «Тег»: «заблокировано»
+    "protocol": "blackhole",
+    "settings": {},
+    "tag": "blocked"
   }],
 
- // Транспорт для глобальных транспортных условий. Если у вас есть несколько транспортов с одинаковыми настройками
- // (скажем, mKCP), вы можете поместить это здесь, а не в каждом отдельном входе / выходе.
- // «Транспорт»: {},
+  // Transport is for global transport settings. If you have multiple transports with same settings
+  // (say mKCP), you may put it here, instead of in each individual inbound/outbounds.
+  //"transport": {},
 
- // Маршрутизация контролирует, как трафик с inbounds отправляется на outbounds.
-  «Маршрутизация»: {
-    "DomainStrategy": «IPOnDemand»,
-    «Правила»:[
+  // Routing controls how traffic from inbounds are sent to outbounds.
+  "routing": {
+    "domainStrategy": "IPOnDemand",
+    "rules":[
       {
         // Blocks access to private IPs. Remove this if you want to access your router.
         "type": "field",
@@ -92,53 +92,53 @@
       "domain:wikipedia.org": "www.wikimedia.org",
       "domain:shadowsocks.org": "electronicsrealm.com"
     },
-    «серверы»: [
-      «1.1.1.1»,
+    "servers": [
+      "1.1.1.1",
       {
-        «адрес»: «114.114.114.114»,
-        «порт»: 53,
- // Список доменов, которые сначала используют этот DNS.
-        «домены»: [
-          "geosite: cn"
+        "address": "114.114.114.114",
+        "port": 53,
+        // List of domains that use this DNS first.
+        "domains": [
+          "geosite:cn"
         ]
       },
-      «8.8.8.8»,
-      «localhost»
+      "8.8.8.8",
+      "localhost"
     ]
   },
 
- // Политика контролирует некоторое внутреннее поведение того, как V2Рэй обрабатывает соединения.
- // Это может быть на уровне соединения по уровням пользователя в «уровнях» или по глобальным настройкам в «системе».«
-  «политика»: {
- // Политика подключения по уровням пользователей
-    «Уровни»: {
-      «0»: {
+  // Policy controls some internal behavior of how V2Ray handles connections.
+  // It may be on connection level by user levels in 'levels', or global settings in 'system.'
+  "policy": {
+    // Connection policys by user levels
+    "levels": {
+      "0": {
         "uplinkOnly": 0,
         "downlinkOnly": 0
       }
     },
-    «система»: {
-      "statsInboundUplink": ложный,
-      "statsInboundDownlink": ложный,
-      "statsOutboundUplink": ложный,
-      "statsOutboundDownlink": ложный
+    "system": {
+      "statsInboundUplink": false,
+      "statsInboundDownlink": false,
+      "statsOutboundUplink": false,
+      "statsOutboundDownlink": false
     }
   },
 
- // Статистика позволяет внутренний счетчик статистики.
- // Этот параметр можно использовать вместе с Policy и Api. 
- //«Статы»:{},
+  // Stats enables internal stats counter.
+  // This setting can be used together with Policy and Api. 
+  //"stats":{},
 
- // Api позволяет API-интерфейсам gRPC для внешних программ связываться с V2Пример луча.
- //«Апи»: {
- //«Тег»: «Апи»,
- //«Услуги»: [
- // "HandlerService",
- // "LoggerService",
- // "StatsService"
- // ]
- // },
+  // Api enables gRPC APIs for external programs to communicate with V2Ray instance.
+  //"api": {
+    //"tag": "api",
+    //"services": [
+    //  "HandlerService",
+    //  "LoggerService",
+    //  "StatsService"
+    //]
+  //},
 
- // Вы можете добавить другие записи в конфигурацию, но они не будут распознаны V2Ray.
-  "другой": {}
+  // You may add other entries to the configuration, but they will not be recognized by V2Ray.
+  "other": {}
 }
