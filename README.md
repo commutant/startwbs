@@ -1,3 +1,6 @@
 **learning x2ray**
 /usr/local/etc/v2ray/config.json
 https://discord.com/channels/1028543811191836782/1028543811984568373
+Ключ API HNsGrSxy3LQzHLhMxuaAuG5fwp9eDqpX
+EUNJC7T-C2ZHBDD-OWDNEZQ-UDZFMJ4-TIN2EH3-4KE35O7-EIKO7QL-PFCBXQU
+
