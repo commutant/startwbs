@@ -10,3 +10,10 @@ GUI  http://192.168.7.230:8384/
 /home/igorka/Mynotes_7230
 My ID: igorka  WIBLNDD-KTRY45V-SCG2QEC-CRSIOET-YGFR2Q6-H4HBKR5-7LWXVVT-WK2F6QV
 API QbKQ23UwPjfDUec434GSnfk7o9kuJT9Z
+
+
+[Sycnthing](https://docs.syncthing.net/users/strelaysrv.html)
+[Syncthing Relay Docker Image]() 
+https://relays.syncthing.net
+https://github.com/t4skforce/syncthing-relay-discovery/pkgs/container/syncthing-relay-discovery
+[goland
